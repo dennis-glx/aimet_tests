@@ -1,13 +1,13 @@
-# Compression-related imports
-from aimet_common.defs import CostMetric, CompressionScheme, GreedySelectionParameters, RankSelectScheme
-from aimet_torch.defs import WeightSvdParameters, SpatialSvdParameters, ChannelPruningParameters, \
-    ModuleCompRatioPair
-from aimet_torch.compress import ModelCompressor
-import torch, torch.nn.functional as F
-import os
+import torch
 from decimal import Decimal
 
-def spatial_svd_auto_mode(model:torch.nn.Module, evaluate_model):
+# Compression-related imports
+from aimet_common.defs import CostMetric, CompressionScheme, GreedySelectionParameters 
+from aimet_torch.defs import SpatialSvdParameters, ChannelPruningParameters
+from aimet_torch.compress import ModelCompressor
+
+
+def spatial_svd_auto_mode(model:torch.nn.Module, eval_loader, evaluate_model):
     # Specify the necessary parameters
     greedy_params = GreedySelectionParameters(target_comp_ratio=Decimal(0.4),
                                               num_comp_ratio_candidates=10)
