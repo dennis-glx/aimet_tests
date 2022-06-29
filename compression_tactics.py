@@ -24,7 +24,8 @@ def spatial_svd_auto_mode(model:torch.nn.Module, eval_loader, evaluate_model):
                                              input_shape=(1, 1, 28, 28),
                                              compress_scheme=CompressionScheme.spatial_svd,
                                              cost_metric=CostMetric.mac,
-                                             parameters=params)
+                                             parameters=params,
+                                             visualization_url=None)
 
     compressed_model, stats = results
     print(compressed_model)
@@ -53,7 +54,8 @@ def channel_pruning_auto_mode(model:torch.nn.Module, train_loader, evaluate_mode
                                              input_shape=(1, 1, 28, 28),
                                              compress_scheme=CompressionScheme.channel_pruning,
                                              cost_metric=CostMetric.mac,
-                                             parameters=params)
+                                             parameters=params,
+                                             visualization_url=None)
 
     compressed_model, stats = results
     print(compressed_model)
